@@ -14,8 +14,8 @@ import (
 	_ "github.com/microsoft/go-mssqldb"
 	"github.com/volatiletech/strmangle"
 
-	"github.com/volatiletech/sqlboiler/v4/drivers"
-	"github.com/volatiletech/sqlboiler/v4/importers"
+	"github.com/mechiko/sqlboiler/v4/drivers"
+	"github.com/mechiko/sqlboiler/v4/importers"
 )
 
 //go:embed override
@@ -131,7 +131,7 @@ func MSSQLBuildQueryString(user, pass, dbname, host string, port int, sslmode st
 
 	u := &url.URL{
 		Scheme:   "sqlserver",
-		User:     "",
+		User:     url.UserPassword(user, pass),
 		Host:     fmt.Sprintf("%s:%d", host, port),
 		RawQuery: query.Encode(),
 	}
@@ -556,7 +556,7 @@ func (MSSQLDriver) Imports() (col importers.Collection, err error) {
 			},
 			ThirdParty: importers.List{
 				`"github.com/volatiletech/strmangle"`,
-				`"github.com/volatiletech/sqlboiler/v4/drivers"`,
+				`"github.com/mechiko/sqlboiler/v4/drivers"`,
 			},
 		},
 	}
@@ -580,7 +580,7 @@ func (MSSQLDriver) Imports() (col importers.Collection, err error) {
 				`"github.com/kat-co/vala"`,
 				`"github.com/friendsofgo/errors"`,
 				`"github.com/spf13/viper"`,
-				`"github.com/volatiletech/sqlboiler/v4/drivers/sqlboiler-mssql/driver"`,
+				`"github.com/mechiko/sqlboiler/v4/drivers/sqlboiler-mssql/driver"`,
 				`"github.com/volatiletech/randomize"`,
 				`_ "github.com/microsoft/go-mssqldb"`,
 			},
@@ -640,10 +640,10 @@ func (MSSQLDriver) Imports() (col importers.Collection, err error) {
 			Standard: importers.List{`"time"`},
 		},
 		"types.Decimal": {
-			Standard: importers.List{`"github.com/volatiletech/sqlboiler/v4/types"`},
+			Standard: importers.List{`"github.com/mechiko/sqlboiler/v4/types"`},
 		},
 		"types.NullDecimal": {
-			Standard: importers.List{`"github.com/volatiletech/sqlboiler/v4/types"`},
+			Standard: importers.List{`"github.com/mechiko/sqlboiler/v4/types"`},
 		},
 		"mssql.UniqueIdentifier": {
 			Standard: importers.List{`"github.com/microsoft/go-mssqldb"`},
