@@ -74,7 +74,7 @@ func (m *MSSQLDriver) Assemble(config drivers.Config) (dbinfo *drivers.DBInfo, e
 		}
 	}()
 
-	user := config.MustString(drivers.ConfigUser)
+	user := config.String(drivers.ConfigUser)
 	pass, _ := config.String(drivers.ConfigPass)
 	dbname := config.MustString(drivers.ConfigDBName)
 	host := config.MustString(drivers.ConfigHost)
@@ -131,7 +131,7 @@ func MSSQLBuildQueryString(user, pass, dbname, host string, port int, sslmode st
 
 	u := &url.URL{
 		Scheme:   "sqlserver",
-		User:     url.UserPassword(user, pass),
+		User:     "",
 		Host:     fmt.Sprintf("%s:%d", host, port),
 		RawQuery: query.Encode(),
 	}
