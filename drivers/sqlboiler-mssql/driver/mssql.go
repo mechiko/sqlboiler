@@ -12,10 +12,10 @@ import (
 	// Side effect import go-mssqldb
 	"github.com/friendsofgo/errors"
 	_ "github.com/microsoft/go-mssqldb"
-	"github.com/volatiletech/strmangle"
+	"github.com/mechiko/strmangle"
 
-	"github.com/volatiletech/sqlboiler/v4/drivers"
-	"github.com/volatiletech/sqlboiler/v4/importers"
+	"github.com/mechiko/sqlboiler/v4/drivers"
+	"github.com/mechiko/sqlboiler/v4/importers"
 )
 
 //go:embed override
