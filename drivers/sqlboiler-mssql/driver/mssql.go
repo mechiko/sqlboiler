@@ -74,8 +74,8 @@ func (m *MSSQLDriver) Assemble(config drivers.Config) (dbinfo *drivers.DBInfo, e
 		}
 	}()
 
-	user := config.String(drivers.ConfigUser)
-	pass, _ := config.String(drivers.ConfigPass)
+	user := ""
+	pass := ""
 	dbname := config.MustString(drivers.ConfigDBName)
 	host := config.MustString(drivers.ConfigHost)
 	port := config.DefaultInt(drivers.ConfigPort, 1433)
