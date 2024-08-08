@@ -131,7 +131,7 @@ func MSSQLBuildQueryString(user, pass, dbname, host string, port int, sslmode st
 
 	u := &url.URL{
 		Scheme:   "sqlserver",
-		User:     "",
+		User:     url.UserPassword(user, pass),
 		Host:     fmt.Sprintf("%s:%d", host, port),
 		RawQuery: query.Encode(),
 	}
